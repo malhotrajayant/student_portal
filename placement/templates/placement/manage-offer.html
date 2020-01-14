@@ -1,0 +1,24 @@
+{% extends "placement/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Offer List</h1>
+    <ul>
+    {% for ofr in offer_list %}
+        <li>{{ ofr.company }} - {{ ofr.o_type }} - {{ ofr.cgpa_cut }} - {{ ofr.active }}</li>
+    {% empty %}
+        <li>No offers yet.</li>
+    {% endfor %}
+    </ul>
+    <hr><hr>
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ o_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Create New</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

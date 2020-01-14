@@ -1,0 +1,22 @@
+{% extends "placement/base.html" %}
+{% block content %}
+    <div class="container">
+      <h2>Offer Status</h2>            
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Application Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in applications  %}
+              <tr>
+                <td>{{i.offer.company.name}}</td>
+                <td>{{i.get_status}}</td>
+              </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+{% endblock content %}

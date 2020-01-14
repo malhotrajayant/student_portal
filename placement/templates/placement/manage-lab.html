@@ -1,0 +1,24 @@
+{% extends "placement/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Lab List</h1>
+    <ul>
+    {% for lab in lab_list %}
+        <li>{{ lab.name }} - {{ lab.description }} - {{ lab.capacity }} - {{ lab.active }}</li>
+    {% empty %}
+        <li>No labs yet.</li>
+    {% endfor %}
+    </ul>
+    <hr><hr>
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ l_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Create New</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

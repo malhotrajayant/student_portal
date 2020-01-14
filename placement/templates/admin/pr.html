@@ -1,0 +1,23 @@
+{% extends "placement/base.html" %}
+{% block content %}
+    {% load crispy_forms_tags %}
+    <h1>PR List</h1>
+    <ul>
+    {% for pr in pr_list %}
+        <li>{{ pr.get_full_name }} ({{pr.username}})</li>
+    {% empty %}
+        <li>No PRs yet.</li>
+    {% endfor %}
+    </ul>
+    <br><hr><hr>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Add/Remove PR</legend>
+            {{ pr_form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Proceed</button>
+        </div>
+    </form>
+{% endblock %}

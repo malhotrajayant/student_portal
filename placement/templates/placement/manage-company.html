@@ -1,0 +1,24 @@
+{% extends "placement/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Company List</h1>
+    <ul>
+    {% for cmp in company_list %}
+        <li>{{ cmp.name }}</li>
+    {% empty %}
+        <li>No companies yet.</li>
+    {% endfor %}
+    </ul>
+    <hr><hr>
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ c_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
