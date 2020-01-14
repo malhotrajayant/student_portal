@@ -1,0 +1,2 @@
+# student_portal
+Developed a Django based web application that displays student information about its placement details. It is a centralized system which will help both students as well as placement administration. It will eliminate the need for making google form and circulating it through mail or WhatsApp groups as all the information regarding each student placement details will be available there.
